@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/add': (ctx) => AddScreen(),
           '/edit': (ctx) => EditScreen(),
+          '/info': (ctx) => InfoScreen(),
         },
       ),
     );

@@ -42,7 +42,20 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<RecordCubit, RecordState>(builder: (context, state) {
       return Scaffold(
-        appBar: AppBar(title: Text('Мед статистика')),
+        appBar: AppBar(
+          title: Text('Мед статистика'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GestureDetector(
+                child: Icon(Icons.info_outline),
+                onTap: () {
+                  Navigator.pushNamed(context, '/info');
+                },
+              ),
+            )
+          ],
+        ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

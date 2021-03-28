@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_pressure/forms/add_form.dart';
 import 'package:info_pressure/models/record_info.dart';
+import 'package:info_pressure/screens/info_screen.dart';
 import 'package:info_pressure/state/record_cubit.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
