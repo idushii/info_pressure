@@ -1,4 +1,4 @@
-package com.example.info_pressure
+package com.infopressure.medstat
 
 import io.flutter.embedding.android.FlutterActivity
 

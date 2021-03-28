@@ -1,6 +1,8 @@
-part of 'main.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:uuid/uuid.dart';
 
 class RecordInfo {
+  final String uuid;
   final String dateTime;
   final String pressure1;
   final String pressure2;
@@ -8,6 +10,7 @@ class RecordInfo {
   final String wellBeing;
 
   RecordInfo({
+    @required this.uuid,
     @required this.dateTime,
     @required this.pressure1,
     @required this.pressure2,
@@ -15,7 +18,19 @@ class RecordInfo {
     @required this.wellBeing,
   });
 
+  factory RecordInfo.empty() {
+    return RecordInfo(
+      uuid: Uuid().v4(),
+      dateTime: DateTime.now().toIso8601String(),
+      pressure1: '',
+      pressure2: '',
+      frequency: '',
+      wellBeing: '',
+    );
+  }
+
   copyWith({
+    String uuid,
     String dateTime,
     String pressure1,
     String pressure2,
@@ -23,6 +38,7 @@ class RecordInfo {
     String wellBeing,
   }) {
     return new RecordInfo(
+      uuid: uuid ?? this.uuid,
       dateTime: dateTime ?? this.dateTime,
       pressure1: pressure1 ?? this.pressure1,
       pressure2: pressure2 ?? this.pressure2,
@@ -33,17 +49,18 @@ class RecordInfo {
 
   @override
   String toString() {
-    return "$dateTime;$pressure1;$pressure2;$frequency;$wellBeing";
+    return "$uuid,$dateTime;$pressure1;$pressure2;$frequency;$wellBeing";
   }
 
   static RecordInfo fromString(String string) {
     var texts = string.split(';');
     return new RecordInfo(
-      dateTime: texts[0],
-      pressure1: texts[1],
-      pressure2: texts[2],
-      frequency: texts[3],
-      wellBeing: texts[4],
+      uuid: texts[0],
+      dateTime: texts[1],
+      pressure1: texts[2],
+      pressure2: texts[3],
+      frequency: texts[4],
+      wellBeing: texts[5],
     );
   }
 
